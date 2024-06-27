@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>555</width>
+    <height>851</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>555</width>
      <height>28</height>
     </rect>
    </property>
@@ -28,6 +28,7 @@
      <string>File</string>
     </property>
     <addaction name="actionLoad"/>
+    <addaction name="actionsave_in_file"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -35,9 +36,18 @@
     </property>
     <addaction name="actionRender_curve"/>
     <addaction name="actionGet_corte_geoelectrico"/>
+    <addaction name="actionBuild_corte"/>
+   </widget>
+   <widget class="QMenu" name="menuTomography">
+    <property name="title">
+     <string>Tomography</string>
+    </property>
+    <addaction name="actionStart_New"/>
+    <addaction name="actionTomo_Manager"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuTools"/>
+   <addaction name="menuTomography"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionLoad">
@@ -53,6 +63,26 @@
   <action name="actionGet_corte_geoelectrico">
    <property name="text">
     <string>Get corte geoelectrico</string>
+   </property>
+  </action>
+  <action name="actionsave_in_file">
+   <property name="text">
+    <string>Save in file</string>
+   </property>
+  </action>
+  <action name="actionBuild_corte">
+   <property name="text">
+    <string>Build corte</string>
+   </property>
+  </action>
+  <action name="actionStart_New">
+   <property name="text">
+    <string>Start New</string>
+   </property>
+  </action>
+  <action name="actionTomo_Manager">
+   <property name="text">
+    <string>Tomo Manager</string>
    </property>
   </action>
  </widget>

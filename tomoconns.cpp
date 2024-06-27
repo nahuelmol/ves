@@ -2,14 +2,14 @@
 #include <ostream>
 #include <lua.hpp>
 
-lua_State* lua_connection(){
+lua_State* conns(){
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
     lua_newtable(L);
     return L;
 }
 
-int lua_load(std::string& filename, lua_State* L){
+int tomoloads(std::string& filename, lua_State* L){
     std::string path = "lua/" + filename + ".lua";
     const char* filepath = path.c_str();
     if (luaL_loadfile(L, filepath) || lua_pcall(L,0,0,0)){

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "tomomanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,9 +18,13 @@ public:
 
 private slots:
     void onaction_curve();
+    void onaction_corte();
+    void onaction_build_corte();
+    void onaction_tomomanager();
 
 private:
     Ui::MainWindow *ui;
+    Tomomanager *tomomanager;
 };
 
 #endif // MAINWINDOW_H
