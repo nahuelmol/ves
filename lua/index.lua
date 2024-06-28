@@ -28,4 +28,6 @@ elseif (CMD == "BUILD") then
     print("build data")
 elseif (CMD == "DISPLAY") then
     print("display data")
+elseif (CMD == "GRAPH") then
+    print("graphing")
 end

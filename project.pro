@@ -13,10 +13,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
            mainwindow.cpp \
-           tomomanager.cpp
+           tomomanager.cpp \
+           tomoscene.cpp
 
 HEADERS +=  mainwindow.h \
-            tomomanager.h
+            tomomanager.h \
+            tomoscene.h
 
 FORMS +=    mainwindow.ui \
             tomomanager.ui

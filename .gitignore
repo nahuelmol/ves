@@ -1,4 +1,5 @@
 *.o
 *.stash
 moc_*
+my_qt_project
 Makefile

@@ -4,6 +4,11 @@
 #include <QWidget>
 #include <QDialog>
 #include <QMainWindow>
+#include <QTextBrowser>
+
+#include <qwt_plot.h>
+#include <qwt_plot_curve.h>
+#include "tomoscene.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Tomomanager; }
@@ -19,11 +24,15 @@ public:
 
 private slots:
     void onaction_build();
-    void onaction_display();
+    void onaction_dis();
+    void onaction_imp();
 
 private:
     Ui::Tomomanager *ui; 
+    Tomoscene *scene;
+
+    QTextBrowser *monitor;
+    QwtPlot *plot;
 };
 
 #endif // TOMOMANAGER_H
-
