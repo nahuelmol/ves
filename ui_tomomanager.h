@@ -15,6 +15,7 @@
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextBrowser>
 #include "qwt_plot.h"
@@ -32,6 +33,11 @@ public:
     QGraphicsView *graphicsView;
     QPushButton *importBtn;
     QTextBrowser *monitorText;
+    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_2;
+    QLineEdit *lineEdit_3;
+    QLineEdit *lineEdit_4;
+    QPushButton *inputsBtn;
 
     void setupUi(QDialog *Tomomanager)
     {
@@ -45,7 +51,7 @@ public:
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         qwtPlot = new QwtPlot(Tomomanager);
         qwtPlot->setObjectName(QString::fromUtf8("qwtPlot"));
-        qwtPlot->setGeometry(QRect(30, 80, 400, 200));
+        qwtPlot->setGeometry(QRect(30, 80, 400, 181));
         label = new QLabel(Tomomanager);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(30, 20, 471, 61));
@@ -64,6 +70,21 @@ public:
         monitorText = new QTextBrowser(Tomomanager);
         monitorText->setObjectName(QString::fromUtf8("monitorText"));
         monitorText->setGeometry(QRect(590, 290, 256, 101));
+        lineEdit = new QLineEdit(Tomomanager);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setGeometry(QRect(30, 280, 41, 31));
+        lineEdit_2 = new QLineEdit(Tomomanager);
+        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        lineEdit_2->setGeometry(QRect(80, 280, 41, 31));
+        lineEdit_3 = new QLineEdit(Tomomanager);
+        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        lineEdit_3->setGeometry(QRect(130, 280, 41, 31));
+        lineEdit_4 = new QLineEdit(Tomomanager);
+        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
+        lineEdit_4->setGeometry(QRect(180, 280, 41, 31));
+        inputsBtn = new QPushButton(Tomomanager);
+        inputsBtn->setObjectName(QString::fromUtf8("inputsBtn"));
+        inputsBtn->setGeometry(QRect(260, 280, 94, 28));
 
         retranslateUi(Tomomanager);
         QObject::connect(buttonBox, SIGNAL(accepted()), Tomomanager, SLOT(accept()));
@@ -79,6 +100,7 @@ public:
         buildBtn->setText(QCoreApplication::translate("Tomomanager", "Build", nullptr));
         displayBtn->setText(QCoreApplication::translate("Tomomanager", "Display", nullptr));
         importBtn->setText(QCoreApplication::translate("Tomomanager", "Import", nullptr));
+        inputsBtn->setText(QCoreApplication::translate("Tomomanager", "inputsBtn", nullptr));
     } // retranslateUi
 
 };

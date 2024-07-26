@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <QGraphicsItem>
+#include <QDebug>
 
 #include <qwt_plot.h>
 #include <qwt_plot_curve.h>
@@ -44,6 +45,7 @@ Tomomanager::Tomomanager(QWidget *parent)
     connect(ui->buildBtn, &QPushButton::clicked, this, &Tomomanager::onaction_build);
     connect(ui->displayBtn, &QPushButton::clicked, this, &Tomomanager::onaction_dis);
     connect(ui->importBtn, &QPushButton::clicked, this, &Tomomanager::onaction_imp);
+    connect(ui->inputsBtn, &QPushButton::clicked, this, &Tomomanager::onaction_inputs);
 }
 
 Tomomanager::~Tomomanager()
@@ -52,11 +54,17 @@ Tomomanager::~Tomomanager()
 }
 
 void Tomomanager::onaction_imp(){
-    qDebug() << "importing";
+    std::string filename = "buttons";
+    lua_State* L = conns();
+    const char* command = "IMPORT";
+    lua_pushstring(L, command);
+    lua_setglobal(L,"CMD");
+    tomoloads(filename, L);
+    lua_close(L);
 }
 
 void Tomomanager::onaction_build(){
-    std::string filename = "index";
+    std::string filename = "buttons";
     lua_State* L = conns();
     const char* command = "BUILD";
     lua_pushstring(L, command);
@@ -65,11 +73,22 @@ void Tomomanager::onaction_build(){
     lua_close(L);
 }
 void Tomomanager::onaction_dis(){
-    std::string filename = "index";
+    std::string filename = "buttons";
     lua_State* L = conns();
     const char* command = "DISPLAY";
     lua_pushstring(L, command);
     lua_setglobal(L,"CMD");
     tomoloads(filename, L);
     lua_close(L);
+}
+
+void Tomomanager::onaction_inputs(){
+    QString text1 = ui->lineEdit->text();
+    QString text2 = ui->lineEdit_2->text();
+    QString text3 = ui->lineEdit_3->text();
+    QString text4 = ui->lineEdit_4->text();
+    qDebug() << text1;
+    qDebug() << text2;
+    qDebug() << text3;
+    qDebug() << text4;
 }

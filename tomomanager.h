@@ -26,6 +26,7 @@ private slots:
     void onaction_build();
     void onaction_dis();
     void onaction_imp();
+    void onaction_inputs();
 
 private:
     Ui::Tomomanager *ui; 
@@ -33,6 +34,7 @@ private:
 
     QTextBrowser *monitor;
     QwtPlot *plot;
+    //QLineEdit *edit;
 };
 
 #endif // TOMOMANAGER_H
