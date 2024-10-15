@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Seismic</class>
+ <widget class="QDialog" name="Seismic">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="okBtn">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>30</y>
+     <width>94</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ok</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -14,12 +14,16 @@ TEMPLATE = app
 SOURCES += main.cpp \
            mainwindow.cpp \
            tomomanager.cpp \
-           tomoscene.cpp
+           tomoscene.cpp \
+           seismic.cpp
+
 
 HEADERS +=  mainwindow.h \
             tomomanager.h \
-            tomoscene.h
+            tomoscene.h \
+            seismic.h
 
 FORMS +=    mainwindow.ui \
-            tomomanager.ui
+            tomomanager.ui \
+            seismic.ui
 

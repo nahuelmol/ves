@@ -30,11 +30,13 @@ public:
     QAction *actionBuild_corte;
     QAction *actionStart_New;
     QAction *actionTomo_Manager;
+    QAction *actionJust_window;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuTools;
     QMenu *menuTomography;
+    QMenu *menuSeismic_Displays;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -56,6 +58,8 @@ public:
         actionStart_New->setObjectName(QString::fromUtf8("actionStart_New"));
         actionTomo_Manager = new QAction(MainWindow);
         actionTomo_Manager->setObjectName(QString::fromUtf8("actionTomo_Manager"));
+        actionJust_window = new QAction(MainWindow);
+        actionJust_window->setObjectName(QString::fromUtf8("actionJust_window"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         MainWindow->setCentralWidget(centralwidget);
@@ -68,6 +72,8 @@ public:
         menuTools->setObjectName(QString::fromUtf8("menuTools"));
         menuTomography = new QMenu(menubar);
         menuTomography->setObjectName(QString::fromUtf8("menuTomography"));
+        menuSeismic_Displays = new QMenu(menubar);
+        menuSeismic_Displays->setObjectName(QString::fromUtf8("menuSeismic_Displays"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -76,6 +82,7 @@ public:
         menubar->addAction(menuFile->menuAction());
         menubar->addAction(menuTools->menuAction());
         menubar->addAction(menuTomography->menuAction());
+        menubar->addAction(menuSeismic_Displays->menuAction());
         menuFile->addAction(actionLoad);
         menuFile->addAction(actionsave_in_file);
         menuTools->addAction(actionRender_curve);
@@ -83,6 +90,7 @@ public:
         menuTools->addAction(actionBuild_corte);
         menuTomography->addAction(actionStart_New);
         menuTomography->addAction(actionTomo_Manager);
+        menuSeismic_Displays->addAction(actionJust_window);
 
         retranslateUi(MainWindow);
 
@@ -99,9 +107,11 @@ public:
         actionBuild_corte->setText(QCoreApplication::translate("MainWindow", "Build corte", nullptr));
         actionStart_New->setText(QCoreApplication::translate("MainWindow", "Start New", nullptr));
         actionTomo_Manager->setText(QCoreApplication::translate("MainWindow", "Tomo Manager", nullptr));
+        actionJust_window->setText(QCoreApplication::translate("MainWindow", "Just window", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuTools->setTitle(QCoreApplication::translate("MainWindow", "Tools", nullptr));
         menuTomography->setTitle(QCoreApplication::translate("MainWindow", "Tomography", nullptr));
+        menuSeismic_Displays->setTitle(QCoreApplication::translate("MainWindow", "Seismic Displays", nullptr));
     } // retranslateUi
 
 };

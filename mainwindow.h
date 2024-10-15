@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "tomomanager.h"
+#include "seismic.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,10 +22,12 @@ private slots:
     void onaction_corte();
     void onaction_build_corte();
     void onaction_tomomanager();
+    void onaction_just_window();
 
 private:
     Ui::MainWindow *ui;
     Tomomanager *tomomanager;
+    Seismic *seismic;
 };
 
 #endif // MAINWINDOW_H

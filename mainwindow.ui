@@ -45,9 +45,16 @@
     <addaction name="actionStart_New"/>
     <addaction name="actionTomo_Manager"/>
    </widget>
+   <widget class="QMenu" name="menuSeismic_Displays">
+    <property name="title">
+     <string>Seismic Displays</string>
+    </property>
+    <addaction name="actionJust_window"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuTools"/>
    <addaction name="menuTomography"/>
+   <addaction name="menuSeismic_Displays"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionLoad">
@@ -83,6 +90,11 @@
   <action name="actionTomo_Manager">
    <property name="text">
     <string>Tomo Manager</string>
+   </property>
+  </action>
+  <action name="actionJust_window">
+   <property name="text">
+    <string>Just window</string>
    </property>
   </action>
  </widget>

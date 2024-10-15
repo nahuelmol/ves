@@ -30,4 +30,7 @@ elseif (CMD == "DISPLAY") then
     print("display data")
 elseif (CMD == "GRAPH") then
     print("graphing")
+elseif (CMD == "SEIS") then
+    print("seismic window working")
+    print("I should try to display traces here")
 end

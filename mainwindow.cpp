@@ -2,14 +2,17 @@
 #include "embedded.cpp"
 #include "mainwindow.h"
 #include "tomomanager.h"
+#include "seismic.h"
 #include "ui_mainwindow.h"
 #include "ui_tomomanager.h"
+#include "ui_seismic.h"
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , tomomanager(nullptr)
+    , seismic(nullptr)
 {
     ui->setupUi(this);
 
@@ -17,6 +20,15 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionGet_corte_geoelectrico, &QAction::triggered, this, &MainWindow::onaction_corte);
     connect(ui->actionBuild_corte, &QAction::triggered, this, &MainWindow::onaction_build_corte);
     connect(ui->actionTomo_Manager, &QAction::triggered, this, &MainWindow::onaction_tomomanager);
+    connect(ui->actionJust_window, &QAction::triggered, this, &MainWindow::onaction_just_window);
+}
+
+
+void MainWindow::onaction_just_window() {
+    std::cout << "opening" << std::endl;
+    if(!seismic)
+        seismic = new Seismic(this);
+    seismic->show();
 }
 
 void MainWindow::onaction_tomomanager(){
