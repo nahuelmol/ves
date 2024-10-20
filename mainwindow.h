@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QKeyEvent>
 #include "tomomanager.h"
 #include "seismic.h"
 
@@ -28,6 +29,8 @@ private:
     Ui::MainWindow *ui;
     Tomomanager *tomomanager;
     Seismic *seismic;
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
 };
 
 #endif // MAINWINDOW_H

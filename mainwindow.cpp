@@ -7,6 +7,8 @@
 #include "ui_tomomanager.h"
 #include "ui_seismic.h"
 #include <QMessageBox>
+#include <QKeyEvent>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -23,6 +25,24 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionJust_window, &QAction::triggered, this, &MainWindow::onaction_just_window);
 }
 
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+    std::string filename = "index";
+    lua_State* L = lua_connection();
+    const char* command = "EVENT";
+    lua_pushstring(L, command);
+    lua_setglobal(L,"CMD");
+    //if(event->modifiers() & Qt::ControlModifier && event->key() == Qt::Key_C){
+    if(event->modifiers() & Qt::ControlModifier && event->key()){
+        char buffer[2];
+        buffer[0] = static_cast<char>(event->key());
+        buffer[1] = '\0';
+        const char* character = buffer;
+        lua_pushstring(L, character);
+        lua_setglobal(L,"COMBINATION");
+    }
+    lua_load(filename, L);
+    lua_close(L);
+}
 
 void MainWindow::onaction_just_window() {
     std::cout << "opening" << std::endl;

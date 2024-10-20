@@ -33,4 +33,16 @@ elseif (CMD == "GRAPH") then
 elseif (CMD == "SEIS") then
     print("seismic window working")
     print("I should try to display traces here")
+elseif (CMD == "EVENT") then
+    if (COMBINATION == "C") then
+        print("control C")
+    elseif (COMBINATION == "R") then
+        print("control R")
+    elseif (COMBINATION == "Z") then
+        print("control Z")
+    elseif (COMBINATION == "X") then
+        print("control X")
+    elseif (COMBINATION == "V") then
+        print("control V")
+    end
 end
