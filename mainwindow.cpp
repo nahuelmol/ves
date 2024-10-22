@@ -3,9 +3,11 @@
 #include "mainwindow.h"
 #include "tomomanager.h"
 #include "seismic.h"
+#include "console.h"
 #include "ui_mainwindow.h"
 #include "ui_tomomanager.h"
 #include "ui_seismic.h"
+#include "ui_console.h"
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QDebug>
@@ -15,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , tomomanager(nullptr)
     , seismic(nullptr)
+    , console(nullptr)
 {
     ui->setupUi(this);
 
@@ -27,12 +30,17 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {
     std::string filename = "index";
-    lua_State* L = lua_connection();
+    /*lua_State* L = lua_connection();
     const char* command = "EVENT";
     lua_pushstring(L, command);
-    lua_setglobal(L,"CMD");
-    //if(event->modifiers() & Qt::ControlModifier && event->key() == Qt::Key_C){
-    if(event->modifiers() & Qt::ControlModifier && event->key()){
+    lua_setglobal(L,"CMD");*/
+    if(event->modifiers() & Qt::ControlModifier && event->key() == Qt::Key_C){
+        if(!console)
+            console = new Console(this);
+        console->show();
+        qDebug() << "control c";
+    };
+    /*if(event->modifiers() & Qt::ControlModifier && event->key()){
         char buffer[2];
         buffer[0] = static_cast<char>(event->key());
         buffer[1] = '\0';
@@ -41,7 +49,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
         lua_setglobal(L,"COMBINATION");
     }
     lua_load(filename, L);
-    lua_close(L);
+    lua_close(L);*/
 }
 
 void MainWindow::onaction_just_window() {

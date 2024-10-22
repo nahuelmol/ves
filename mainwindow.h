@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include "tomomanager.h"
 #include "seismic.h"
+#include "console.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,6 +30,7 @@ private:
     Ui::MainWindow *ui;
     Tomomanager *tomomanager;
     Seismic *seismic;
+    Console *console;
 protected:
     void keyPressEvent(QKeyEvent *event) override;
 };

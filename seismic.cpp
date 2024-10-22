@@ -20,10 +20,8 @@ Seismic::Seismic(QWidget *parent)
     , ui(new Ui::Seismic)
 {
     ui->setupUi(this);
-
     connect(ui->okBtn, &QPushButton::clicked, this, &Seismic::prove);
 }
-
 
 Seismic::~Seismic()
 {

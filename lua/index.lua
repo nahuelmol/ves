@@ -1,3 +1,7 @@
+local prev_path = package.path
+package.path = "lua/?.lua;../lua/?.lua;" ..package.path
+local controls = require("controls")
+package.path = prev_path
 
 if(CMD == "CREATE") then
     -- create a CORTE
@@ -36,6 +40,7 @@ elseif (CMD == "SEIS") then
 elseif (CMD == "EVENT") then
     if (COMBINATION == "C") then
         print("control C")
+        controls.service()
     elseif (COMBINATION == "R") then
         print("control R")
     elseif (COMBINATION == "Z") then
