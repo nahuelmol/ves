@@ -3,7 +3,7 @@
 #include <string>
 #include "objs/cmd.cpp"
 
-void command_builder(std::string cmdstring) {
+bool command_builder(std::string cmdstring) {
     std::string command = "";
     std::vector<std::string> words;
     for (char c : cmdstring) {
@@ -20,7 +20,9 @@ void command_builder(std::string cmdstring) {
     Command cmd(words);
     if (cmd.build() == false) {
         std::cout << "command cannot be created" << std::endl;
+        return false;
     } else {
         std::cout << "command created" << std::endl;
+        return true;
     };
 }

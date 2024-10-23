@@ -22,18 +22,22 @@ class Ui_Console
 public:
     QTextEdit *textEdit;
     QTextBrowser *textBrowser;
+    QTextBrowser *errCommand;
 
     void setupUi(QDialog *Console)
     {
         if (Console->objectName().isEmpty())
             Console->setObjectName(QString::fromUtf8("Console"));
-        Console->resize(400, 401);
+        Console->resize(400, 467);
         textEdit = new QTextEdit(Console);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(10, 300, 381, 91));
+        textEdit->setGeometry(QRect(10, 360, 381, 91));
         textBrowser = new QTextBrowser(Console);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
         textBrowser->setGeometry(QRect(10, 20, 381, 271));
+        errCommand = new QTextBrowser(Console);
+        errCommand->setObjectName(QString::fromUtf8("errCommand"));
+        errCommand->setGeometry(QRect(10, 300, 381, 51));
 
         retranslateUi(Console);
 

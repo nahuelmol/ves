@@ -1,13 +1,18 @@
 #include <lua.hpp>
 #include "embedded.cpp"
+
 #include "mainwindow.h"
 #include "tomomanager.h"
 #include "seismic.h"
 #include "console.h"
+#include "widgets/workflow.h"
+
 #include "ui_mainwindow.h"
 #include "ui_tomomanager.h"
 #include "ui_seismic.h"
 #include "ui_console.h"
+#include "ui_workflow.h"
+
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QDebug>
@@ -18,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
     , tomomanager(nullptr)
     , seismic(nullptr)
     , console(nullptr)
+    , workflow(nullptr)
 {
     ui->setupUi(this);
 
@@ -26,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionBuild_corte, &QAction::triggered, this, &MainWindow::onaction_build_corte);
     connect(ui->actionTomo_Manager, &QAction::triggered, this, &MainWindow::onaction_tomomanager);
     connect(ui->actionJust_window, &QAction::triggered, this, &MainWindow::onaction_just_window);
+    connect(ui->actionWork_Flow, &QAction::triggered, this, &MainWindow::onaction_wf);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {
@@ -50,6 +57,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
     }
     lua_load(filename, L);
     lua_close(L);*/
+}
+
+void MainWindow::onaction_wf() {
+    if(!workflow)
+        workflow = new Workflow(this);
+    workflow->show();
 }
 
 void MainWindow::onaction_just_window() {

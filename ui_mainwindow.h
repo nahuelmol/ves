@@ -31,6 +31,7 @@ public:
     QAction *actionStart_New;
     QAction *actionTomo_Manager;
     QAction *actionJust_window;
+    QAction *actionWork_Flow;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menuFile;
@@ -60,6 +61,8 @@ public:
         actionTomo_Manager->setObjectName(QString::fromUtf8("actionTomo_Manager"));
         actionJust_window = new QAction(MainWindow);
         actionJust_window->setObjectName(QString::fromUtf8("actionJust_window"));
+        actionWork_Flow = new QAction(MainWindow);
+        actionWork_Flow->setObjectName(QString::fromUtf8("actionWork_Flow"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         MainWindow->setCentralWidget(centralwidget);
@@ -91,6 +94,7 @@ public:
         menuTomography->addAction(actionStart_New);
         menuTomography->addAction(actionTomo_Manager);
         menuSeismic_Displays->addAction(actionJust_window);
+        menuSeismic_Displays->addAction(actionWork_Flow);
 
         retranslateUi(MainWindow);
 
@@ -108,6 +112,7 @@ public:
         actionStart_New->setText(QCoreApplication::translate("MainWindow", "Start New", nullptr));
         actionTomo_Manager->setText(QCoreApplication::translate("MainWindow", "Tomo Manager", nullptr));
         actionJust_window->setText(QCoreApplication::translate("MainWindow", "Just window", nullptr));
+        actionWork_Flow->setText(QCoreApplication::translate("MainWindow", "Work Flow", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuTools->setTitle(QCoreApplication::translate("MainWindow", "Tools", nullptr));
         menuTomography->setTitle(QCoreApplication::translate("MainWindow", "Tomography", nullptr));

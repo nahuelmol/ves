@@ -36,3 +36,16 @@ private:
     std::string cmd;
 };
 
+
+
+class WorkFlow
+{
+public:
+    WorkFlow() {}
+
+    void add_level() {
+        std::string level[3] = {"raw", "CMP", "NMO"};
+    }
+private:
+    std::vector<std::string> levels;
+};

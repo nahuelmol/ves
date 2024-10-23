@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>401</height>
+    <height>467</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>300</y>
+     <y>360</y>
      <width>381</width>
      <height>91</height>
     </rect>
@@ -30,6 +30,16 @@
      <y>20</y>
      <width>381</width>
      <height>271</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="errCommand">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>300</y>
+     <width>381</width>
+     <height>51</height>
     </rect>
    </property>
   </widget>

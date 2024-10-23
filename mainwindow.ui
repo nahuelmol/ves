@@ -50,6 +50,7 @@
      <string>Seismic Displays</string>
     </property>
     <addaction name="actionJust_window"/>
+    <addaction name="actionWork_Flow"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuTools"/>
@@ -95,6 +96,11 @@
   <action name="actionJust_window">
    <property name="text">
     <string>Just window</string>
+   </property>
+  </action>
+  <action name="actionWork_Flow">
+   <property name="text">
+    <string>Work Flow</string>
    </property>
   </action>
  </widget>

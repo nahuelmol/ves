@@ -30,7 +30,13 @@ Console::~Console()
 void Console::entering() {
     QString cmd = ui->textEdit->toPlainText();
     std::string cmdstring = cmd.toStdString();
-    command_builder(cmdstring);
+    if(command_builder(cmdstring) == false){
+        QString errmsg = "wrong command";
+        ui->errCommand->setPlainText(errmsg);
+    } else {
+        QString okmsg = "right command";
+        ui->errCommand->setPlainText(okmsg);
+    }
 
     QString previous = ui->textBrowser->toPlainText();
     QString content = previous + "\n" + cmd; 

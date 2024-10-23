@@ -17,6 +17,7 @@ SOURCES += main.cpp \
            tomoscene.cpp \
            seismic.cpp \
            console.cpp \
+           widgets/workflow.cpp \
            MyTextEdit.cpp
 
 
@@ -25,10 +26,12 @@ HEADERS +=  mainwindow.h \
             tomoscene.h \
             seismic.h \
             console.h \
+            widgets/workflow.h \
             MyTextEdit.h
 
 FORMS +=    mainwindow.ui \
             tomomanager.ui \
             seismic.ui \
-            console.ui
+            console.ui \
+            workflow.ui
 
