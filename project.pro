@@ -15,15 +15,20 @@ SOURCES += main.cpp \
            mainwindow.cpp \
            tomomanager.cpp \
            tomoscene.cpp \
-           seismic.cpp
+           seismic.cpp \
+           console.cpp \
+           MyTextEdit.cpp
 
 
 HEADERS +=  mainwindow.h \
             tomomanager.h \
             tomoscene.h \
-            seismic.h
+            seismic.h \
+            console.h \
+            MyTextEdit.h
 
 FORMS +=    mainwindow.ui \
             tomomanager.ui \
-            seismic.ui
+            seismic.ui \
+            console.ui
 

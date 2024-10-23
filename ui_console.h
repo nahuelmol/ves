@@ -27,13 +27,13 @@ public:
     {
         if (Console->objectName().isEmpty())
             Console->setObjectName(QString::fromUtf8("Console"));
-        Console->resize(400, 300);
+        Console->resize(400, 401);
         textEdit = new QTextEdit(Console);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(10, 150, 381, 141));
+        textEdit->setGeometry(QRect(10, 300, 381, 91));
         textBrowser = new QTextBrowser(Console);
         textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
-        textBrowser->setGeometry(QRect(10, 20, 381, 101));
+        textBrowser->setGeometry(QRect(10, 20, 381, 271));
 
         retranslateUi(Console);
 
