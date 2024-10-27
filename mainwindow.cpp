@@ -36,27 +36,11 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {
-    std::string filename = "index";
-    /*lua_State* L = lua_connection();
-    const char* command = "EVENT";
-    lua_pushstring(L, command);
-    lua_setglobal(L,"CMD");*/
     if(event->modifiers() & Qt::ControlModifier && event->key() == Qt::Key_C){
         if(!console)
             console = new Console(this);
         console->show();
-        qDebug() << "control c";
     };
-    /*if(event->modifiers() & Qt::ControlModifier && event->key()){
-        char buffer[2];
-        buffer[0] = static_cast<char>(event->key());
-        buffer[1] = '\0';
-        const char* character = buffer;
-        lua_pushstring(L, character);
-        lua_setglobal(L,"COMBINATION");
-    }
-    lua_load(filename, L);
-    lua_close(L);*/
 }
 
 void MainWindow::onaction_wf() {

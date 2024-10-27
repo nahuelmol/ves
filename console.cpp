@@ -11,6 +11,7 @@
 Console::Console(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Console)
+    , workflow(nullptr)
 {
     ui->setupUi(this);
     MyTextEdit *textEdit = new MyTextEdit(this);
@@ -27,6 +28,57 @@ Console::~Console()
     delete ui;
 }
 
+void Console::cmd_switcher(Command cmd) {
+    if(cmd.get_cmd() == "show"){
+        shower(cmd.get_target());
+    } else if(cmd.get_cmd() == "close"){
+        closer(cmd.get_target());
+    }
+}
+
+void Console::shower(std::string target) {
+    if(target == "wf") {
+        show_workflow();
+    }
+}
+
+void Console::show_workflow() {
+    if(!workflow)
+        workflow = new Workflow(this);
+    workflow->show();
+}
+void Console::closer(std::string target) {
+    if(target == "wf"){
+        if(workflow)
+            workflow->close();
+    }
+}
+
+bool Console::command_builder(std::string cmdstring) {
+    std::string command = "";
+    std::vector<std::string> words;
+    for (char c : cmdstring) {
+        if (c == ' ') {
+            words.push_back(command);
+            command = "";
+        } else {
+            command.push_back(c);
+        }
+    }
+    if (!command.empty()) {
+        words.push_back(command);
+    }
+    Command cmd(words);
+    if (cmd.build() == false) {
+        std::cout << "command cannot be created" << std::endl;
+        return false;
+    } else {
+        std::cout << "command created" << std::endl;
+        cmd_switcher(cmd);
+        return true;
+    };
+}
+
 void Console::entering() {
     QString cmd = ui->textEdit->toPlainText();
     std::string cmdstring = cmd.toStdString();
@@ -37,7 +89,6 @@ void Console::entering() {
         QString okmsg = "right command";
         ui->errCommand->setPlainText(okmsg);
     }
-
     QString previous = ui->textBrowser->toPlainText();
     QString content = previous + "\n" + cmd; 
     ui->textBrowser->setPlainText(content);

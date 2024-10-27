@@ -14,19 +14,33 @@ public:
             std::cout << "flag:" << each << std::endl;
         }
     }
-
     bool build() {
+        bool cmdok = false;
+        bool targetok = false;
         cmd = flags[0];
-        std::string commands[2] = {"add", "display"};
+        target = flags[1];
+        std::string commands[4] = {"add", "display", "show", "close"};
+        std::string windows[1] = {"wf"};
         for (auto command : commands) {
             if (cmd == command) {
-                return true;
+                cmdok = true;
             }
         }
-        return false;
-        target = flags[1];
+        for (auto window : windows) {
+            if (target == window) {
+                targetok=true;
+            }
+        }
+        if (cmdok == true && targetok == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    std::string get_cmd() {
+        return cmd;
+    }
     std::string get_target() {
         return target;
     }
