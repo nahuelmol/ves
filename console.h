@@ -10,6 +10,7 @@
 #include <QKeyEvent>
 #include "objs/cmd.cpp"
 #include "widgets/workflow.h"
+#include "widgets/workspace.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Console; }
@@ -29,6 +30,7 @@ private slots:
 public:
     bool command_builder(std::string);
     void show_workflow();
+    void show_projects();
     void closer(std::string);
 
     void cmd_switcher(Command);
@@ -37,6 +39,7 @@ public:
 private:
     Ui::Console *ui;
     Workflow *workflow;
+    Workspace *workspace;
 };
 
 #endif // CONSOLE_H

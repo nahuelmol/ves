@@ -6,12 +6,14 @@
 #include "seismic.h"
 #include "console.h"
 #include "widgets/workflow.h"
+#include "widgets/workspace.h"
 
 #include "ui_mainwindow.h"
 #include "ui_tomomanager.h"
 #include "ui_seismic.h"
 #include "ui_console.h"
 #include "ui_workflow.h"
+#include "ui_workspace.h"
 
 #include <QMessageBox>
 #include <QKeyEvent>
@@ -24,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     , seismic(nullptr)
     , console(nullptr)
     , workflow(nullptr)
+    , workspace(nullptr)
 {
     ui->setupUi(this);
 

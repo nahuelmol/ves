@@ -2,7 +2,6 @@
 #include "console.h"
 #include "ui_console.h"
 #include <QMessageBox>
-#include <QDebug>
 #include "MyTextEdit.h"
 #include "MyTextEdit.cpp"
 
@@ -39,6 +38,8 @@ void Console::cmd_switcher(Command cmd) {
 void Console::shower(std::string target) {
     if(target == "wf") {
         show_workflow();
+    } else if(target == "projects") {
+        show_projects();//this shows projects in the current dir
     }
 }
 
@@ -47,10 +48,21 @@ void Console::show_workflow() {
         workflow = new Workflow(this);
     workflow->show();
 }
+
+void Console::show_projects() {
+    if(!workspace)
+        workspace = new Workspace(this);
+    workspace->show();
+    workspace->looking();
+}
+
 void Console::closer(std::string target) {
     if(target == "wf"){
         if(workflow)
             workflow->close();
+    } else if(target == "projects") {
+        if(workspace)
+            workspace->close();
     }
 }
 

@@ -20,7 +20,7 @@ public:
         cmd = flags[0];
         target = flags[1];
         std::string commands[4] = {"add", "display", "show", "close"};
-        std::string windows[1] = {"wf"};
+        std::string windows[2] = {"wf", "projects"};
         for (auto command : commands) {
             if (cmd == command) {
                 cmdok = true;

@@ -18,6 +18,7 @@ SOURCES += main.cpp \
            seismic.cpp \
            console.cpp \
            widgets/workflow.cpp \
+           widgets/workspace.cpp \
            MyTextEdit.cpp
 
 
@@ -27,11 +28,13 @@ HEADERS +=  mainwindow.h \
             seismic.h \
             console.h \
             widgets/workflow.h \
+            widgets/workspace.h \
             MyTextEdit.h
 
 FORMS +=    mainwindow.ui \
             tomomanager.ui \
             seismic.ui \
             console.ui \
+            workspace.ui \
             workflow.ui
 

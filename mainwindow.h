@@ -35,6 +35,8 @@ private:
     Seismic *seismic;
     Console *console;
     Workflow *workflow;
+    Workspace *workspace;
+    
 protected:
     void keyPressEvent(QKeyEvent *event) override;
 };
