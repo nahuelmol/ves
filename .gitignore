@@ -2,3 +2,5 @@
 *.stash
 moc_*
 my_qt_project
+myenv
+prove.rc
