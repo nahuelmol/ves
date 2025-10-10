@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include "resource.h"
 
+#include <iostream>
+
 HINSTANCE hInst;
 
 BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -24,7 +26,13 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
     {
         switch(LOWORD(wParam))
         {
+        case ID_BTN_OK:
+            std::cout << "ok pressed" << std::endl;
+            break;
         }
+        case ID_BTN_CANCEL:
+            std::cout << "calceling" << std::endl;
+            break;
     }
     return TRUE;
     }

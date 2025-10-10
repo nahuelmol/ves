@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1760066818 source:d:\ves\geoelectrical\main.cpp
+	<windows.h>
+	<commctrl.h>
+	<stdio.h>
+	"resource.h"
+	<iostream>
+
+1760066612 d:\ves\geoelectrical\resource.h
+
+1760066792 source:d:\ves\geoelectrical\resource.rc
+	<windows.h>
+	<commctrl.h>
+	<richedit.h>
+	"resource.h"
+
