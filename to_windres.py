@@ -49,16 +49,16 @@ def modify(ctrls):
                     style = third.replace(bs, "")
             for ss in SS:
                 if ss in words:
-                    classy = ss[3:]
+                    classy = "LTEXT"
                     ss = "{} |".format(ss)
-                    style = third.replace(ss, "")
+                    style = third
             for cbs in CBS:
                 if cbs in words:
-                    classy = cbs[4:]
+                    classy = "COMBOBOX"
                     cbs = "{} |".format(cbs)
-                    style = third.replace(cbs, "")
+                    style = third
             dims = listed[-4:]
-            newline = "{} \"{}\", {},".format(classy, caption, ID)
+            newline = "\t{} \"{}\", {},".format(classy, caption, ID)
             for di in dims:
                 newline = "{} {},".format(newline, di)
             newline = "{} {}".format(newline, style)
@@ -72,11 +72,10 @@ def convert(ctrl):
     path = "{}\{}".format(os.getcwd(), res)
     with open(path, "r", encoding="latin1") as f:
         cnt = f.read()
-        prev= cnt.split("BEGIN")
-        print(prev)
-        last= cnt.split("END")
+        prev= cnt.split("BEGIN")[0]
+        last= cnt.split("END")[1]
         classic = modify(ctrl)
-        modified= "{}\n{}\n{}".format(prev, classic, last)
+        modified= "{}\nBEGIN{}\nEND\n{}".format(prev, classic, last)
         return modified
 
 if __name__ == "__main__":
