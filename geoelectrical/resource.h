@@ -9,19 +9,27 @@
 
 
 
+
+
+
+
+
+
+
+
 //IDS_INSERTED
 
-ID_DPBTN_"&OK"		  1
-ID_PBTN_"&Cancel"		  2
-ID_PBTN_"Slingram"		  0
-ID_PBTN_"Turam"		  -1
-ID_PBTN_"Inclined		  -1
-ID_PBTN_"SP"		  -1
-ID_PBTN_"IP"		  -1
-ID_PBTN_"Telluric		  -1
-ID_PBTN_"MT"		  -1
-ID_PBTN_"AFMAG"		  -1
-ID_CBX_"Axis"		  0
-ID_CBX_"Axis"		  -1
-ID_LT_"X"		  0
-ID_LT_"Y:"		  -1
+ID_DPBTN_OK		  1
+ID_PBTN_Cancel		  2
+ID_PBTN_Slingram		  100
+ID_PBTN_Turam		  101
+ID_PBTN_InclinedField		  102
+ID_PBTN_SP		  -1
+ID_PBTN_IP		  -1
+ID_PBTN_TelluricCurrents		  -1
+ID_PBTN_MT		  -1
+ID_PBTN_AFMAG		  -1
+ID_CBX_Axis		  0
+ID_CBX_Axis		  -1
+ID_LT_X		  0
+ID_LT_Y:		  -1

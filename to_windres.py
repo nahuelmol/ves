@@ -82,7 +82,7 @@ if __name__ == "__main__":
     res, controls = extract()
     if res == True:
         converted = convert(controls)
-        with open("prove.rc", "w") as f:
+        with open("geoelectrical\\resource.rc", "w") as f:
             f.write(converted)
 
 

@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 
 def extract():
-    rc = "prove.rc"
+    rc = "geoelectrical\\resource.rc"
     rh = "geoelectrical\\resource.h"
     ides = []
     tipes = ["PUSHBUTTON", "DEFPUSHBUTTON", "COMBOBOX", "LTEXT"]
@@ -18,12 +18,13 @@ def extract():
                 L = line.strip().split(",")
                 if len(L) != 1:
                     iden = L[1]
-                    elem = L[0].split(" ")
-                    tipe = elem[0]
+                    tipe = L[0].split(" ")[0]
+                    capt = L[0].split("\"")[1]
+                    capt = capt.replace("&","")
+                    capt = capt.replace(" ","")
                     if tipe in tipes:
                         idx = tipes.index(tipe)
                         tipe= std_tipes[idx]
-                    capt = elem[1]
                     ides.append("ID_{}_{}\t\t{}".format(tipe, capt, iden))
 
     new_cnt = ""
@@ -36,8 +37,6 @@ def extract():
                 new_cnt = "{}\n{}".format(new_cnt, each)
         with open(rh, "w") as f:
             f.write(new_cnt)
-            
-
 
 
 if __name__ == "__main__":
