@@ -1,6 +1,15 @@
 from pathlib import Path
 import os
 
+def take_caption(lines, L):
+    for line in lines:
+        myline = line.strip().split(",")
+        if (myline[0].split(" ")[0]) == "LTEXT":
+            if L[2] == myline[3]:
+                caption = myline[0].split("\"")[1]
+                caption = caption.replace("&", "").replace(" ", "")
+                return caption
+
 def extract():
     rc = "geoelectrical\\resource.rc"
     rh = "geoelectrical\\resource.h"
@@ -19,13 +28,16 @@ def extract():
                 if len(L) != 1:
                     iden = L[1]
                     tipe = L[0].split(" ")[0]
-                    capt = L[0].split("\"")[1]
-                    capt = capt.replace("&","")
-                    capt = capt.replace(" ","")
+                    if not tipe == "COMBOBOX":
+                        capt = L[0].split("\"")[1]
+                        capt = capt.replace("&","")
+                        capt = capt.replace(" ","")
+                    else:
+                        capt = take_caption(lines, L)
                     if tipe in tipes:
                         idx = tipes.index(tipe)
                         tipe= std_tipes[idx]
-                    ides.append("ID_{}_{}\t\t{}".format(tipe, capt, iden))
+                    ides.append("#define ID_{}_{}\t\t\t\t{}".format(tipe, capt, iden))
 
     new_cnt = ""
     if (os.path.exists(rh)):

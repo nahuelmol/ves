@@ -47,18 +47,20 @@ def modify(ctrls):
                     classy = bs[3:]
                     bs = "{} |".format(bs)
                     style = third.replace(bs, "")
+                    newline = "\t{} \"{}\", {},".format(classy, caption, ID)
             for ss in SS:
                 if ss in words:
                     classy = "LTEXT"
                     ss = "{} |".format(ss)
                     style = third
+                    newline = "\t{} \"{}\", {},".format(classy, caption, ID)
             for cbs in CBS:
                 if cbs in words:
                     classy = "COMBOBOX"
                     cbs = "{} |".format(cbs)
                     style = third
+                    newline = "\t{} {},".format(classy, ID)
             dims = listed[-4:]
-            newline = "\t{} \"{}\", {},".format(classy, caption, ID)
             for di in dims:
                 newline = "{} {},".format(newline, di)
             newline = "{} {}".format(newline, style)

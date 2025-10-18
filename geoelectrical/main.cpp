@@ -7,10 +7,8 @@
 
 HINSTANCE hInst;
 
-BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
-{
-    switch(uMsg)
-    {
+BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+    switch(uMsg) {
     case WM_INITDIALOG:
     {
     }
@@ -24,19 +22,36 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_COMMAND:
     {
-        switch(LOWORD(wParam))
-        {
-        case ID_BTN_OK:
-            std::cout << "ok pressed" << std::endl;
+        switch(LOWORD(wParam)) {
+        case ID_PBTN_Slingram:
+            std::cout << "slingram" << std::endl;
+            break;
+        case ID_PBTN_Turam:
+            std::cout << "Turam" << std::endl;
+            break;
+        case ID_PBTN_InclinedField:
+            std::cout << "Inclined Field" << std::endl;
+            break;
+        case ID_PBTN_SP:
+            std::cout << "Self-potential" << std::endl;
+            break;
+        case ID_PBTN_IP:
+            std::cout << "Induced potential" << std::endl;
+            break;
+        case ID_PBTN_AFMAG:
+            std::cout << "AFMAG" << std::endl;
+            break;
+        case ID_PBTN_TelluricCurrents:
+            std::cout << "Telluric current" << std::endl;
+            break;
+        case ID_PBTN_MT:
+            std::cout << "MT" << std::endl;
             break;
         }
-        case ID_BTN_CANCEL:
-            std::cout << "calceling" << std::endl;
-            break;
-    }
-    return TRUE;
+        return TRUE;
     }
     return FALSE;
+}
 }
 
 

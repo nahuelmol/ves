@@ -4,32 +4,20 @@
 
 #define DLG_MAIN                                100
 
-#define ID_BTN_OK                               201
-#define ID_BTN_CANCEL                           202
-
-
-
-
-
-
-
-
-
-
 
 //IDS_INSERTED
 
-ID_DPBTN_OK		  1
-ID_PBTN_Cancel		  2
-ID_PBTN_Slingram		  100
-ID_PBTN_Turam		  101
-ID_PBTN_InclinedField		  102
-ID_PBTN_SP		  -1
-ID_PBTN_IP		  -1
-ID_PBTN_TelluricCurrents		  -1
-ID_PBTN_MT		  -1
-ID_PBTN_AFMAG		  -1
-ID_CBX_Axis		  0
-ID_CBX_Axis		  -1
-ID_LT_X		  0
-ID_LT_Y:		  -1
+#define ID_DPBTN_OK				  1
+#define ID_PBTN_Cancel				  2
+#define ID_PBTN_Slingram				  150
+#define ID_PBTN_Turam				  151
+#define ID_PBTN_InclinedField				  152
+#define ID_PBTN_SP				  201
+#define ID_PBTN_IP				  202
+#define ID_PBTN_TelluricCurrents				  250
+#define ID_PBTN_MT				  251
+#define ID_PBTN_AFMAG				  252
+#define ID_CBX_X				  100
+#define ID_CBX_Y				  100
+#define ID_LT_X				  0
+#define ID_LT_Y				  -1
