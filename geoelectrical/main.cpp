@@ -1,38 +1,31 @@
+#define UNICODE
+#define _UNICODE
+
 #include <windows.h>
+#include <commdlg.h>
 #include <commctrl.h>
 #include <stdio.h>
 #include "resource.h"
 
 #include <iostream>
 
+
 HINSTANCE hInst;
 
-void OpenFileDialog(HWND hwndOwner){
-    CoInitializeEx(NULL, COINIT_APARTMENTTHRADED | COINIT_DISABLE_OLE1DDE);
-    IFileOpenDialog* pFileOpen = nullptr;
-    HRESULT hr = CoCreateInstance(CLSID_FileOpenDialog, 
-            NULL, 
-            CLSCTX_ALL,
-            IID_IFileOpenDialog,
-            reinterpret_cast<void*>(&pFileOpen));
-    if (SUCCEEDED(hr)) {
-        hr = pFileOpen->Show(hwndOwner);
-        if(SUCCEEDED(hr)) {
-            IShellItem* pItem;
-            hr = pFileOpen->GetResult(&pItem);
-            if(SUCCEEDED(hr)){
-                PWSTR pszFilePath = NULL;
-                hr = pItem->GetDisplayName(SIGDN_FIESYSPATH, &pszFilePath);
-                if(SUCCEEDED(hr)){
-                    MessageBoxW(hwndOwner, pszFilePath, L"File selectd", MB_OK);
-                    CoTaskMemFree(pszFilePath);
-                }
-                pItem->Release();
-            }
-        }
-        pFileOpen->Release();
+void OpenFileDialog(HWND hwnd){
+    OPENFILENAME ofn;
+    wchar_t szFile[260] = {0};
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = hwnd;
+    ofn.lpstrFile = szFile;
+    ofn.nMaxFile = sizeof(szFile);
+    ofn.lpstrFilter = L"Todos los archivos\0*.*\0Archivos de texto\0*.TXT\0";
+    ofn.nFilterIndex = 1;
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+    if(GetOpenFileName(&ofn)){
+        MessageBox(hwnd, ofn.lpstrFile, L"Archivos seleccionado", MB_OK);
     }
-    CoUninitialize();
 }
 
 BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
@@ -53,7 +46,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
         switch(LOWORD(wParam)) {
         case ID_PBTN_Slingram:
             std::cout << "slingram" << std::endl;
-            OpenFileDialog(hwnd);
+            OpenFileDialog(hwndDlg);
             break;
         case ID_PBTN_Turam:
             std::cout << "Turam" << std::endl;
