@@ -1,31 +1,44 @@
-#define UNICODE
-#define _UNICODE
+#define _WIN32_WINNT 0x0601
 
 #include <windows.h>
-#include <commdlg.h>
 #include <commctrl.h>
 #include <stdio.h>
 #include "resource.h"
 
 #include <iostream>
-
+#include <shobjidl.h>
 
 HINSTANCE hInst;
 
-void OpenFileDialog(HWND hwnd){
-    OPENFILENAME ofn;
-    wchar_t szFile[260] = {0};
-    ZeroMemory(&ofn, sizeof(ofn));
-    ofn.lStructSize = sizeof(ofn);
-    ofn.hwndOwner = hwnd;
-    ofn.lpstrFile = szFile;
-    ofn.nMaxFile = sizeof(szFile);
-    ofn.lpstrFilter = L"Todos los archivos\0*.*\0Archivos de texto\0*.TXT\0";
-    ofn.nFilterIndex = 1;
-    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
-    if(GetOpenFileName(&ofn)){
-        MessageBox(hwnd, ofn.lpstrFile, L"Archivos seleccionado", MB_OK);
+void OpenFileDialog(HWND hwndOwner){
+    HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
+    if(FAILED(hr))
+        return;
+
+    IFileOpenDialog* pFileOpen = NULL;
+    hr = CoCreateInstance(CLSID_FileOpenDialog,
+            NULL,
+            CLSCTX_ALL,
+            IID_IFileOpenDialog,
+            reinterpret_cast<void**>(&pFileOpen));
+    if (SUCCEEDED(hr)) {
+        hr = pFileOpen->Show(hwndOwner);
+        if(SUCCEEDED(hr)) {
+            IShellItem* pItem;
+            hr = pFileOpen->GetResult(&pItem);
+            if(SUCCEEDED(hr)){
+                PWSTR pszFilePath = NULL;
+                hr = pItem->GetDisplayName(SIGDN_FILESYSPATH, &pszFilePath);
+                if(SUCCEEDED(hr)){
+                    MessageBoxW(hwndOwner, pszFilePath, L"File selectd", MB_OK);
+                    CoTaskMemFree(pszFilePath);
+                }
+                pItem->Release();
+            }
+        }
+        pFileOpen->Release();
     }
+    CoUninitialize();
 }
 
 BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
