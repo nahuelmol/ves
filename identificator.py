@@ -50,6 +50,6 @@ def extract():
         with open(rh, "w") as f:
             f.write(new_cnt)
 
-
 if __name__ == "__main__":
     extract()
+
