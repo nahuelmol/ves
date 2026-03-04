@@ -9,7 +9,7 @@ def extract():
     if not os.path.exists(path):
         print("path: {}\ndoes not exists".format(path))
         return False, None
-    with open(path, "r", encoding="latin1") as f:
+    with open(path, "r", encoding="utf-16") as f: #latin1
         lines = f.readlines()
         incontrol = False
         for l in lines:
@@ -72,7 +72,7 @@ def modify(ctrls):
 def convert(ctrl):
     res = "geoelectrical\\resource.rc"
     path = "{}\{}".format(os.getcwd(), res)
-    with open(path, "r", encoding="latin1") as f:
+    with open(path, "r", encoding="latin1") as f: #latin1
         cnt = f.read()
         prev= cnt.split("BEGIN")[0]
         last= cnt.split("END")[1]
@@ -82,12 +82,15 @@ def convert(ctrl):
 
 if __name__ == "__main__":
     res, controls = extract()
+    """
+    for each in controls:
+        print(each.encode("unicode_escape"))
+        if print("あ" in each):
+            print("found")
+    """
     if res == True:
         converted = convert(controls)
-        with open("geoelectrical\\resource.rc", "w") as f:
+        with open("geoelectrical\\resource.rc", "w", encoding="utf-16") as f:
             f.write(converted)
-
-
-
 
 

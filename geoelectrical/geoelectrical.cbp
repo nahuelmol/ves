@@ -36,6 +36,10 @@
 			<Add library="user32" />
 			<Add library="kernel32" />
 			<Add library="comctl32" />
+			<Add library="comdlg32" />
+			<Add library="ole32" />
+			<Add library="uuid" />
+			<Add library="shell32" />
 		</Linker>
 		<Unit filename="main.cpp" />
 		<Unit filename="manifest.xml" />

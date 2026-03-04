@@ -10,36 +10,6 @@
 
 HINSTANCE hInst;
 
-void OpenFileDialog(HWND hwndOwner){
-    HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
-    if(FAILED(hr))
-        return;
-
-    IFileOpenDialog* pFileOpen = NULL;
-    hr = CoCreateInstance(CLSID_FileOpenDialog,
-            NULL,
-            CLSCTX_ALL,
-            IID_IFileOpenDialog,
-            reinterpret_cast<void**>(&pFileOpen));
-    if (SUCCEEDED(hr)) {
-        hr = pFileOpen->Show(hwndOwner);
-        if(SUCCEEDED(hr)) {
-            IShellItem* pItem;
-            hr = pFileOpen->GetResult(&pItem);
-            if(SUCCEEDED(hr)){
-                PWSTR pszFilePath = NULL;
-                hr = pItem->GetDisplayName(SIGDN_FILESYSPATH, &pszFilePath);
-                if(SUCCEEDED(hr)){
-                    MessageBoxW(hwndOwner, pszFilePath, L"File selectd", MB_OK);
-                    CoTaskMemFree(pszFilePath);
-                }
-                pItem->Release();
-            }
-        }
-        pFileOpen->Release();
-    }
-    CoUninitialize();
-}
 
 BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch(uMsg) {
@@ -58,8 +28,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     {
         switch(LOWORD(wParam)) {
         case ID_PBTN_Slingram:
-            std::cout << "slingram" << std::endl;
-            OpenFileDialog(hwndDlg);
+            std::cout << "こんにちは世界" << std::endl;
             break;
         case ID_PBTN_Turam:
             std::cout << "Turam" << std::endl;
