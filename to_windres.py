@@ -9,7 +9,7 @@ def extract():
     if not os.path.exists(path):
         print("path: {}\ndoes not exists".format(path))
         return False, None
-    with open(path, "r", encoding="utf-16") as f: #latin1
+    with open(path, "r", encoding="utf-16") as f:
         lines = f.readlines()
         incontrol = False
         for l in lines:
@@ -31,48 +31,53 @@ def modify(ctrls):
     
     classic = ""
     j = 0
+    print(ctrls)
     for ctrl in ctrls:
+        if ctrl == "":
+            continue
         ctrl = ctrl.replace("\x00", "")
         listed = ctrl.split(",")
-        if (j % 2 == 0) and (j!=0) :
+        #if (j % 2 == 0) and (j!=0):
+        if len(listed[0].split('"')) > 1:
             caption = listed[0].split('"')[1]
             ID      = listed[1]
-            style   = ""
-            classy  = ""
+        style   = ""
+        classy  = ""
 
-            third = listed[3].replace("\x00", "")
-            words = third.split(" ")
-            for bs in BS:
-                if bs in words:
-                    classy = bs[3:]
-                    bs = "{} |".format(bs)
-                    style = third.replace(bs, "")
-                    newline = "\t{} \"{}\", {},".format(classy, caption, ID)
-            for ss in SS:
-                if ss in words:
-                    classy = "LTEXT"
-                    ss = "{} |".format(ss)
-                    style = third
-                    newline = "\t{} \"{}\", {},".format(classy, caption, ID)
-            for cbs in CBS:
-                if cbs in words:
-                    classy = "COMBOBOX"
-                    cbs = "{} |".format(cbs)
-                    style = third
-                    newline = "\t{} {},".format(classy, ID)
-            dims = listed[-4:]
-            for di in dims:
-                newline = "{} {},".format(newline, di)
-            newline = "{} {}".format(newline, style)
-            classic = "{}\n{}".format(classic, newline)
-        j=j+1
+        third = listed[3].replace("\x00", "")
+        words = third.split(" ")
+        for bs in BS:
+            if bs in words:
+                classy = bs[3:]
+                bs = "{} |".format(bs)
+                style = third.replace(bs, "")
+                newline = "\t{} \"{}\", {},".format(classy, caption, ID)
+        for ss in SS:
+            if ss in words:
+                classy = "LTEXT"
+                ss = "{} |".format(ss)
+                style = third
+                newline = "\t{} \"{}\", {},".format(classy, caption, ID)
+        for cbs in CBS:
+            if cbs in words:
+                classy = "COMBOBOX"
+                cbs = "{} |".format(cbs)
+                style = third
+                newline = "\t{} {},".format(classy, ID)
+        dims = listed[-4:]
+        for di in dims:
+            newline = "{} {},".format(newline, di)
+        newline = "{} {}".format(newline, style)
+        classic = "{}\n{}".format(classic, newline)
+        #else:
+        #    print("condition")
+        #j=j+1
     return classic
-
 
 def convert(ctrl):
     res = "geoelectrical\\resource.rc"
     path = "{}\{}".format(os.getcwd(), res)
-    with open(path, "r", encoding="latin1") as f: #latin1
+    with open(path, "r", encoding="utf-16") as f:
         cnt = f.read()
         prev= cnt.split("BEGIN")[0]
         last= cnt.split("END")[1]
@@ -82,6 +87,7 @@ def convert(ctrl):
 
 if __name__ == "__main__":
     res, controls = extract()
+    print("controls size:", len(controls))
     """
     for each in controls:
         print(each.encode("unicode_escape"))

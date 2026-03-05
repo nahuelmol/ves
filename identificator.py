@@ -3,13 +3,14 @@ import os
 
 def hira_detector(capt):
     main_kata = ["あ", "か", "さ", "た", "な", "は","ま","や","ら","わ"]
-    kata_code = ["3042", "304B", "3055", "305F", "306A", "306F", "307E", "3084", "3089", "308F"]
-    for i_kata in main_kata:
-        if i_kata in capt:
-            print(i_kata.encode("unicode_escape"))
-            idx = main_kata.index(i_kata)
-            return kata_code[idx]
-    return "None"
+    if capt in main_kata:
+        strcode = repr(capt.encode("unicode_escape")[3:])
+        code = strcode.replace("'","")
+        code = code.replace("b","")
+        print(code)
+        return code
+    else:
+        return capt
 
 def take_caption(lines, L):
     for line in lines:
