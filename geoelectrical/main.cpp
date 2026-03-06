@@ -1,4 +1,4 @@
-#define _WIN32_WINNT 0x0601
+//#define _WIN32_WINNT 0x0601
 
 #include <windows.h>
 #include <commctrl.h>
@@ -27,28 +27,28 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     case WM_COMMAND:
     {
         switch(LOWORD(wParam)) {
-        case ID_PBTN_Slingram:
+        case ID_PBTN_042:
             std::cout << "こんにちは世界" << std::endl;
             break;
-        case ID_PBTN_Turam:
+        case ID_PBTN_05f:
             std::cout << "Turam" << std::endl;
             break;
-        case ID_PBTN_InclinedField:
+        case ID_PBTN_07e:
             std::cout << "Inclined Field" << std::endl;
             break;
-        case ID_PBTN_SP:
+        case ID_PBTN_055:
             std::cout << "Self-potential" << std::endl;
             break;
-        case ID_PBTN_IP:
+        case ID_PBTN_06f:
             std::cout << "Induced potential" << std::endl;
             break;
-        case ID_PBTN_AFMAG:
+        case ID_PBTN_089:
             std::cout << "AFMAG" << std::endl;
             break;
-        case ID_PBTN_TelluricCurrents:
+        case ID_PBTN_04:
             std::cout << "Telluric current" << std::endl;
             break;
-        case ID_PBTN_MT:
+        case ID_PBTN_06a:
             std::cout << "MT" << std::endl;
             break;
         }
@@ -56,6 +56,7 @@ BOOL CALLBACK DlgMain(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     }
     return FALSE;
 }
+return TRUE;
 }
 
 

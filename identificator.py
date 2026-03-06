@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 
 def hira_detector(capt):
-    main_kata = ["あ", "か", "さ", "た", "な", "は","ま","や","ら","わ"]
+    main_kata = ["あ", "か", "さ", "た", "な", "は","ま","や","ら","わ","゛", "、"]
     if capt in main_kata:
         strcode = repr(capt.encode("unicode_escape")[3:])
         code = strcode.replace("'","")
@@ -59,7 +59,7 @@ def extract():
             new_cnt = "{}\n{}\n".format(new_cnt, "//IDS_INSERTED")
             for each in ides:
                 new_cnt = "{}\n{}".format(new_cnt, each)
-        with open(rh, "w", encoding="utf-16") as f:
+        with open(rh, "w", encoding="latin1") as f:
             f.write(new_cnt)
 
 if __name__ == "__main__":

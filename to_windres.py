@@ -30,7 +30,6 @@ def modify(ctrls):
     SS  = ["SS_LEFT"]
     
     classic = ""
-    #j = 0
     for j, ctrl in enumerate(ctrls):
         if (ctrl == ""):
             continue
