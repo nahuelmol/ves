@@ -53,7 +53,7 @@ def extract():
 
     new_cnt = ""
     if (os.path.exists(rh)):
-        with open(rh, "r") as f:
+        with open(rh, "r", encoding="utf-16") as f:
             cnt = f.read()
             new_cnt = cnt.split("//IDS_INSERTED")[0]
             new_cnt = "{}\n{}\n".format(new_cnt, "//IDS_INSERTED")

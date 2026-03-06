@@ -30,14 +30,15 @@ def modify(ctrls):
     SS  = ["SS_LEFT"]
     
     classic = ""
-    j = 0
-    print(ctrls)
-    for ctrl in ctrls:
-        if ctrl == "":
+    #j = 0
+    for j, ctrl in enumerate(ctrls):
+        if (ctrl == ""):
             continue
+        elif (j==0):
+            continue
+            
         ctrl = ctrl.replace("\x00", "")
         listed = ctrl.split(",")
-        #if (j % 2 == 0) and (j!=0):
         if len(listed[0].split('"')) > 1:
             caption = listed[0].split('"')[1]
             ID      = listed[1]
@@ -69,9 +70,6 @@ def modify(ctrls):
             newline = "{} {},".format(newline, di)
         newline = "{} {}".format(newline, style)
         classic = "{}\n{}".format(classic, newline)
-        #else:
-        #    print("condition")
-        #j=j+1
     return classic
 
 def convert(ctrl):
