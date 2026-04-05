@@ -6,14 +6,11 @@
 
 ### Idea
 
-This application will read geoelectrical data and process it for interpretation.
+This application will read geoelectrical data, process it and interpret it.
 
-### Platform
+### Tools
 
-Codeblocks is used to develop the GUI.
-Being as this IDE has not an embedded resource editor, an alternative is used. Resource Hacker is an independent resource editor.
+Codeblocks is used to develop the GUI. However this IDE has not an embedded resource editor, then Resource Hacker is used as an independent alternative.
 
-However there's another problem. Resource Hacker does not export .rc file for Mingw's windres. Then windres throws sintax errors.
+A Python script was written to solve a compatibility problem between mingw's windres and the Resource Hacker's resource compiler.
 
-Then a Python script has been written to solve this problem. As the GUI gets more complex the python script should be modified to support new sintax. 
-By now, the scripts only replaces "{" and "}" with "BEGIN" and "END". It also tranforms "CONTROL" generic sentences into specific sentences like PUSHBUTTONS, COMBOBOX, etc.
